@@ -10,24 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import iuh.software.diskmanage.dao.DVDDAO;
 import iuh.software.diskmanage.dao.DVDTypesDAO;
 import iuh.software.diskmanage.dao.TitleDAO;
-import iuh.software.diskmanage.entities.DVD;
 import iuh.software.diskmanage.entities.DVDType;
 import iuh.software.diskmanage.entities.Title;
 
 /**
- * Servlet implementation class DVDController
+ * Servlet implementation class TitleController
  */
-@WebServlet("/listDVD")
-public class DVDController extends HttpServlet {
+@WebServlet("/listTitle")
+public class TitleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DVDController() {
+    public TitleController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,22 +35,22 @@ public class DVDController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DVDDAO dvdDAO = new DVDDAO();
+		DVDTypesDAO dvdTypesDAO = new DVDTypesDAO();
 		TitleDAO titleDAO = new TitleDAO();
 		
 		
-		List<Title> listTitle = titleDAO.getAllTitle();
+		List<DVDType> listType = dvdTypesDAO.getALLTypes();
 		
 
-		for (Title title : listTitle) {
-			List<DVD> listDVD = dvdDAO.getDVDByIdTitle(title.getIdTitle());
-			title.setListDVD(listDVD);
+		for (DVDType dvdType : listType) {
+			List<Title> dsTitle = titleDAO.getTitleByIdType(dvdType.getIdType());
+			dvdType.setDsTitle(dsTitle);
 		}
-		request.setAttribute("listTitle", listTitle);
+		request.setAttribute("listType", listType);
 		
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/ListDVDView.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/ListTitleView.jsp");
 		dispatcher.forward(request, response);
 	}
 

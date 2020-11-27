@@ -25,6 +25,7 @@ public class DVD implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDVD;
+	
 	private Date createDate;
 	
 	@Enumerated
@@ -95,6 +96,17 @@ public class DVD implements Serializable {
 	public void setListRentalInfo(List<RentalInfo> listRentalInfo) {
 		this.listRentalInfo = listRentalInfo;
 	}
+
+	public DVD(Date createDate, DVDStatus status) {
+		super();
+		this.createDate = createDate;
+		this.status = status;
+	}
+
+	public DVD(Date date, int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 
 	
 	

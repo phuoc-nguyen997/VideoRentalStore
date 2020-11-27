@@ -3,9 +3,12 @@
 
 <div style="padding: 5px;">
 
-	<a href="${pageContext.request.contextPath}/danhsachTinTuc">Danh Sách Tin Tức</a> | <a
-		href="${pageContext.request.contextPath}/themTinTuc">Thêm Tin Tức</a>
-	| <a href="${pageContext.request.contextPath}/timKiemDienThoai">Tìm kiếm tin tức</a>
+	<a href="${pageContext.request.contextPath}/listTitle">Danh Sách Title</a> | <a
+		href="${pageContext.request.contextPath}/insertTitle">Thêm Title</a>
+	| <a href="${pageContext.request.contextPath}/listCustomer">Danh Sách Khách Hàng</a> | <a
+		href="${pageContext.request.contextPath}/insertCustomer">Thêm Khách Hàng</a>
+	|<a href="${pageContext.request.contextPath}/listDVD">Danh Sách DVD</a> |
+	<a href="${pageContext.request.contextPath}/timKiemDienThoai">Tìm kiếm tin tức</a>
 		<%-- Info</a> | <a href="${pageContext.request.contextPath}/login">Login</a> --%>
 
 </div>

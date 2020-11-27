@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="UTF-8">
-<title>Danh Sách Khach Hang</title>
+<title>Danh Sách Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style type="text/css">
@@ -54,35 +54,48 @@ a {
 	<nav>
 		<jsp:include page="_menu.jsp"></jsp:include>
 	</nav>
+
+
 	<section>
 
 
-		<div class="w3-container">
-			<table class="w3-table w3-striped">
-				<tr>
-					<th>CustomerID</th>
-					<th>Name</th>
-					<th>Address</th>
-					<th>Phone</th>
-					<th>Mail</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-				<c:forEach var="ct" items="${listCustomer }">
+
+		<c:forEach var="tl" items="${listType}">
+			<li>Type: ${tl.nameType} <br>Rental Period:
+				${tl.rentalPeriod} <br>Price: ${tl.price} <br>Fine:
+				${tl.fine}
+			</li>
+
+			<div class="w3-container">
+				<table class="w3-table w3-striped">
 					<tr>
-						<td>${ct.idCustomer}</td>
-						<td>${ct.customerName}</td>
-						<td>${ct.address}</td>
-						<td>${ct.phone}</td>
-						<td>${ct.mail}</td>
-						<td><a href="${pageContext.request.contextPath}/edit" >Edit</a>
-						<td><a href="${pageContext.request.contextPath}/delete" >Delete</a>
+						<th>TitileID</th>
+						<th>Tile Name</th>
+						<th>Image</th>
+						<th>Description</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
-				</c:forEach>
-			</table>
-		</div>
+					<c:forEach var="tt" items="${tl.dsTitle }">
+						<tr>
+							<td>${tt.idTitle}</td>
+							<td>${tt.titleName}</td>
+							<td><img src="${tt.image_url}" alt="image_url"
+								style="width: 50px; height: 60px"></td>
+							<td>${tt.description}</td>
+							<td><a href="${pageContext.request.contextPath}/editTitle">Edit</a>
+							<td><a href="${pageContext.request.contextPath}/deleteTitle">Delete</a>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</c:forEach>
+
+
 
 	</section>
+
+
 	<footer>
 	
 	</footer>

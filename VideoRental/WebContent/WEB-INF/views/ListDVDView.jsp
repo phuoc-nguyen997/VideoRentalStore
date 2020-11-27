@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="UTF-8">
-<title>Danh Sách Khach Hang</title>
+<title>List DVD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style type="text/css">
@@ -54,37 +54,42 @@ a {
 	<nav>
 		<jsp:include page="_menu.jsp"></jsp:include>
 	</nav>
+
+
 	<section>
 
 
-		<div class="w3-container">
-			<table class="w3-table w3-striped">
-				<tr>
-					<th>CustomerID</th>
-					<th>Name</th>
-					<th>Address</th>
-					<th>Phone</th>
-					<th>Mail</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-				<c:forEach var="ct" items="${listCustomer }">
+
+		<c:forEach var="tt" items="${listTitle}">
+			<li>Title: ${tt.titleName}</li>
+
+			<div class="w3-container">
+				<table class="w3-table w3-striped">
 					<tr>
-						<td>${ct.idCustomer}</td>
-						<td>${ct.customerName}</td>
-						<td>${ct.address}</td>
-						<td>${ct.phone}</td>
-						<td>${ct.mail}</td>
-						<td><a href="${pageContext.request.contextPath}/edit" >Edit</a>
-						<td><a href="${pageContext.request.contextPath}/delete" >Delete</a>
+						<th>DVD_ID</th>
+						<th>Create Date</th>
+						<th>Status</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
-				</c:forEach>
-			</table>
-		</div>
+					<c:forEach var="dvd" items="${tt.listDVD}">
+						<tr>
+							<td>${dvd.idDVD}</td>
+							<td>${dvd.createDate}</td>
+							<td>${dvd.status}</td>
+							<td><a href="${pageContext.request.contextPath}/editDVD">Edit</a>
+							<td><a href="${pageContext.request.contextPath}/deleteDVD">Delete</a>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</c:forEach>
+
+
 
 	</section>
-	<footer>
-	
-	</footer>
+
+
+	<footer> </footer>
 </body>
 </html>
